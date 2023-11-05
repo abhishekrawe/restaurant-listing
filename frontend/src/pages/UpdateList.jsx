@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { TextField, Button, Card, CardContent } from "@mui/material";
+
 
 function UpdateList() {
   const [restaurant, setRestaurant] = useState({
@@ -23,7 +25,7 @@ function UpdateList() {
   const handleClick = async e => {
     e.preventDefault()
     try {
-      await axios.put("http://localhost:5500/restaurant/" +  bookId , restaurant)
+      await axios.put("http://localhost:5500/restaurant/" + bookId, restaurant)
       navigate("/")
     } catch (err) {
       console.log(err)
@@ -32,12 +34,53 @@ function UpdateList() {
 
   return (
     <div>
-      <h1>Update the current Restaurant </h1>
-      <input type="text" placeholder="name" onChange={handleChange} name="name" />
-      <input type="text" placeholder="address" onChange={handleChange} name="address" />
-      <input type="text" placeholder="contact" onChange={handleChange} name="contact" />
-      <input type="text" placeholder="picture" onChange={handleChange} name="picture" />
-      <button onClick={handleClick}>Update </button>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Card variant="outlined" sx={{ maxWidth: 400, paddingBottom: '25px' }}>
+          <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <h1>Update Restaurant List</h1>
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Name"
+              onChange={handleChange}
+              name="name"
+              type="text"
+              placeholder="name"
+            />
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Contact number"
+              onChange={handleChange}
+              name="contact"
+              type="text"
+              placeholder="contact"
+            />
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Write your Full Address"
+              onChange={handleChange}
+              placeholder="address"
+              type="text"
+              multiline
+              rows={4}
+              name="address"
+            />
+            <TextField
+              fullWidth
+              variant="standard"
+              placeholder="text"
+              label="Paste the Image link here"
+              onChange={handleChange}
+              name="picture"
+            />
+          </CardContent>
+          <Button variant="contained" size="medium" onClick={handleClick}>
+            Update
+          </Button>
+        </Card>
+      </div>
     </div>
   )
 }
