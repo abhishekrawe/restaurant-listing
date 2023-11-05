@@ -20,6 +20,15 @@ function Restaurant() {
     fetchAllRestaurantList()
   }, [])
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:5500/restaurants/"+id)
+        window.location.reload()
+    }catch(err) {
+       console.log(err);
+    }
+  }
+
   return <div>
     <h1>Resturant</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -44,6 +53,8 @@ function Restaurant() {
               {restaurant.contact}
             </Typography>
           </CardContent>
+          <Button className="delete" onClick={() => handleDelete(restaurant.id)}>Delete</Button>
+          <Button className="update">Update</Button>
         </Card>
       ))}
     </div>

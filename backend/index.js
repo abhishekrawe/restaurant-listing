@@ -42,6 +42,17 @@ app.post("/restaurant", (req, res) => {
   });
 });
 
+
+app.delete("/restaurants/:id" , (req, res) => {
+  const restaurantId = req.params.id;
+  const q = "DELTE FROM Restaurant WHERE id = ?"
+
+  db.query(q,[restaurantId], (err, data) => {
+     if (err) return res.json(err);
+     return res.json("Restaurant has Deleted succefully🎉");
+  })
+})
+
 app.listen(5500, () => {
   console.log("Welcome To My Backend");
 });
