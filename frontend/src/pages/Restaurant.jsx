@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Restaurant() {
   const [restaurant, setRestaurant] = useState([]);
@@ -24,12 +25,15 @@ function Restaurant() {
         <div className="restaurant" key={restaurant.id}>
           {restaurant.picture && <img src={restaurant.picture} alt="" />}
           <h2>{restaurant.name}</h2>
-          <h2>{restaurant.address}</h2>
-          <h2>{restaurant.contact}</h2>
+          <p>{restaurant.address}</p>
+          <h5>{restaurant.contact}</h5>
+          <h5>{restaurant.picture}</h5>
         </div>
       ))}
     </div>
-
+    <button>
+      <Link to="/addList"> Add New Restaurant </Link>
+    </button>
   </div>;
 }
 
