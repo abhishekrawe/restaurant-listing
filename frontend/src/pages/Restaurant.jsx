@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
+
 
 function Restaurant() {
   const [restaurant, setRestaurant] = useState([]);
@@ -20,20 +22,36 @@ function Restaurant() {
 
   return <div>
     <h1>Resturant</h1>
-    <div className="restaurant">
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {restaurant.map(restaurant => (
-        <div className="restaurant" key={restaurant.id}>
-          {restaurant.picture && <img src={restaurant.picture} alt="" />}
-          <h2>{restaurant.name}</h2>
-          <p>{restaurant.address}</p>
-          <h5>{restaurant.contact}</h5>
-          <h5>{restaurant.picture}</h5>
-        </div>
+        <Card key={restaurant.id} style={{ width: '300px', margin: '10px' }}>
+          {restaurant.picture && (
+            <CardMedia
+              component="img"
+              height="200"
+              image={restaurant.picture}
+              alt="Restaurant Image"
+            />
+          )}
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {restaurant.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              {restaurant.address}
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              {restaurant.contact}
+            </Typography>
+          </CardContent>
+        </Card>
       ))}
     </div>
-    <button>
-      <Link to="/addList"> Add New Restaurant </Link>
-    </button>
+    <Button variant="contained">
+      <Link to="/addlist" style={{ textDecoration: 'none', color: 'white' }}>
+        Add New Restaurant
+      </Link>
+    </Button>
   </div>;
 }
 
