@@ -53,6 +53,24 @@ app.delete("/restaurant/:id" , (req, res) => {
   })
 })
 
+
+app.put("/restaurant/:id", (req, res) => {
+  const restaurantId = req.params.id;
+  const q = "UPDATE restaurant SET `name` = ?, `address` = ?, `contact` = ?, `picture` = ? WHERE id = ?";
+
+  const values = [
+    req.body.name,
+    req.body.address,
+    req.body.contact,
+    req.body.picture,
+  ];
+
+  db.query(q, [...values,restaurantId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Restaurant has been Updated succefully🎉");
+  });
+});
+
 app.listen(5500, () => {
   console.log("Welcome To My Backend");
 });
