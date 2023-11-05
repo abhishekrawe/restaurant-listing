@@ -45,7 +45,7 @@ app.post("/restaurant", (req, res) => {
 
 app.delete("/restaurant/:id" , (req, res) => {
   const restaurantId = req.params.id;
-  const q = "DELTE FROM restaurant WHERE id = ?";
+  const q = "DELETE FROM restaurant WHERE id = ?";
 
   db.query(q, [restaurantId], (err, data) => {
      if (err) return res.json(err);
