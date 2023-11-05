@@ -3,12 +3,13 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-import { Card, CardContent, CardMedia, Typography, Button, Stack } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button, Stack , TextField } from '@mui/material';
 
 
 function Restaurant() {
   const [restaurant, setRestaurant] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchAllRestaurantList = async () => {
@@ -32,6 +33,14 @@ function Restaurant() {
     }
   }
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredRestaurants = restaurant.filter((restaurant) => {
+    return restaurant.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return <div>
     <h1>Restaurant Listing Platform</h1>
     <Button
@@ -42,8 +51,16 @@ function Restaurant() {
     >
       Add New Restaurant
     </Button>
+
+    <TextField
+      label="Search by Name"
+      variant="outlined"
+      value={searchTerm}
+      onChange={handleSearch}
+      style={{ marginBottom: '20px',  width : '60%' }}
+    />
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {restaurant.map(restaurant => (
+      {filteredRestaurants.map(restaurant => (
         <Card
           sx={{ maxWidth: 345 }}
           key={restaurant.id}
