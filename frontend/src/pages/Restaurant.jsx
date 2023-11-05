@@ -22,8 +22,8 @@ function Restaurant() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:5500/restaurants/"+id)
-        window.location.reload()
+      await axios.delete("http://localhost:5500/restaurant/"+id)
+        window.location.reload();
     }catch(err) {
        console.log(err);
     }
@@ -54,7 +54,7 @@ function Restaurant() {
             </Typography>
           </CardContent>
           <Button className="delete" onClick={() => handleDelete(restaurant.id)}>Delete</Button>
-          <Button className="update">Update</Button>
+          <Button className="update"> <Link to={`/updatelist/${restaurant.id}`}>Update </Link></Button>
         </Card>
       ))}
     </div>

@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Restaurant />} />
           <Route path="/addlist" element={<AddList />} />
-          <Route path="/updatelist" element={<UpdateList />} />
+          <Route path="/updatelist/:id" element={<UpdateList />} />
         </Routes>
       </BrowserRouter>
     </div>
