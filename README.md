@@ -56,17 +56,16 @@ To run the backend locally:
 2. Navigate to the project directory.
 3. Cd to Backend
 4. Install dependencies using `npm install`.
-6. Run `node indexjs` to start the server.
+6. Run `node index.js` to start the server.
 7. Access the platform via your browser at `http://localhost:5500`.
 
 To run the frontend locally:
 
-1. Clone this repository.
-2. Navigate to the project directory.
-3. Cd to Frontend
-4. Install dependencies using `npm install`.
-5. Run `node indexjs` to start the server.
-7. Access the platform via your browser at `http://localhost:3000`.
+1. Navigate to the project directory.
+2. Cd to Frontend
+3. Install dependencies using `npm install`.
+4. Run `npm start` to start the client.
+5. Access the platform via your browser at `http://localhost:3000`.
 
 ## Usage
 
