@@ -16,11 +16,8 @@ Welcome to the Restaurant Listing platform.
 
 ## 🃏Glimse of Project ⏬
 
-### `video ` 
-
-https://github.com/abhishekrawe/restaurant-listing/assets/65603830/3e85e43f-2c9f-4e6b-a9cd-ca23ae1da331
-
-
+### `video `
+https://github.com/abhishekrawe/restaurant-listing/assets/65603830/1eb008bb-ddf6-4f5f-b9da-c3a14177a88f 
 
 
 ## MySQL Database Schema
